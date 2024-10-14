@@ -15,7 +15,7 @@ const Search = () => {
         if (data.length >= 2) {
             const timer = setTimeout(() => {
                 fetch()
-            }, 400);
+            }, 300);
             return () => clearTimeout(timer)
         }
 
@@ -48,7 +48,7 @@ const Search = () => {
     }
 
     return <>
-        <div className="Search flex justify-center pt-6 relative">
+        <div className="Search flex justify-center relative">
             <div className="relative">
                 <input onChange={(e) => setData(e.target.value)} value={data} className="px-4 py-[2px] pr-10 rounded-lg" type="text" placeholder="Search" />
                 <svg onClick={handleIcon} className="absolute cursor-pointer right-1 top-1/2 transform -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 30 30">
@@ -56,7 +56,7 @@ const Search = () => {
                 </svg>
             </div>
 
-            {result && data && <ul className="absolute bg-white top-14 w-60 min-h-16 max-h-48 overflow-auto">
+            {result && data && <ul className="absolute bg-white md:top-8 top-8 w-60 min-h-16 max-h-52 overflow-auto">
                 {result && result.map((item, index) => {
                     return <li onClick={() => handleQuery(item.display_name)} key={index} className="p-1 cursor-pointer hover:bg-slate-200">
                         <span>{item.display_name}</span>
