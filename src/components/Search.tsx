@@ -15,7 +15,7 @@ const Search = () => {
         if (data.length >= 2) {
             const timer = setTimeout(() => {
                 fetch()
-            }, 300);
+            }, 100);
             return () => clearTimeout(timer)
         }
 
@@ -56,7 +56,7 @@ const Search = () => {
                 </svg>
             </div>
 
-            {result && data && <ul className="absolute bg-white md:top-8 top-8 w-60 min-h-16 max-h-52 overflow-auto">
+            {result && data && <ul className="absolute bg-white md:top-8 top-8 md:w-60 w-[273px] min-h-16 max-h-56 overflow-auto">
                 {result && result.map((item, index) => {
                     return <li onClick={() => handleQuery(item.display_name)} key={index} className="p-1 cursor-pointer hover:bg-slate-200">
                         <span>{item.display_name}</span>

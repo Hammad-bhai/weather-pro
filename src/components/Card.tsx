@@ -3,8 +3,10 @@ import Search from "./Search";
 
 interface P {
   icon: string;
-  temp: number;
+  tempc: number;
   tempf: number;
+  feelc: number;
+  feelf: number;
   text: string;
   humidity: number;
   wind: number;
@@ -15,7 +17,7 @@ interface P {
 
 const Card = (props: P) => {
   const [toggle, setToggle] = useState(true)
-  const { icon, temp, tempf, text, humidity, wind, name, country, loader } = props
+  const { icon, tempc, tempf, feelc, feelf, text, humidity, wind, name, country, loader } = props
 
   return <>
     <div className="bg-gray-400 w-screen h-screen flex justify-center items-center">
@@ -25,15 +27,16 @@ const Card = (props: P) => {
         <Search />
 
 
-        {loader ? <div className="flex items-center justify-center font-semibold h-[60%]">Loadind...</div> : <div className="data flex justify-evenly items-center mt-7">
-          <img width={150} src={icon} alt="" />
+        {loader ? <div className="flex items-center justify-center font-semibold h-[60%]">Loading...</div> : <div className="data flex justify-evenly items-center mt-7">
+          <img className="w-40 h-w-40 max-md:mx-[-13px]" src={icon} alt="" />
           <div className="flex flex-col items-center ">
-            <h1 onClick={() => setToggle(!toggle)} className="cursor-pointer mb-4 text-5xl">{toggle ? `${temp}°C` : `${tempf}°F`}</h1>
-            <div className="flex flex-col text-center leading-6 tracking-wide">
-              <span className="">{text}</span>
-              <div className="">
-                <span className="font-[cursive] !font-bold">{name}, </span>
-                <span className="font-[cursive] !font-bold">{country}</span>
+            <h1 onClick={() => setToggle(!toggle)} className="cursor-pointer mb-2 text-5xl">{toggle ? `${tempc}°C` : `${tempf}°F`}</h1>
+            <div className="flex flex-col text-center tracking-wide">
+              <span className="text-sm font-medium">{toggle? `Feels Like ${feelc}°C`:`Feels Like ${feelf}°F`}</span>
+              <span className="text-sm font-medium">{text}</span>
+              <div className="font-black text-lg font-[cursive]">
+                <span>{name}, </span>
+                <span>{country}</span>
               </div>
             </div>
 
